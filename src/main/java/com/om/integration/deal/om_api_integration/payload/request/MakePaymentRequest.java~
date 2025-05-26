@@ -1,0 +1,22 @@
+package com.om.integration.deal.om_api_integration.payload.request;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+public class MakePaymentRequest {
+    private String notifUrl;
+    private String channelUserMsisdn;
+    private String amount;
+    private String subscriberMsisdn;
+    private String pin;
+    private String orderId;
+    private String description;
+    private String payToken;
+}
