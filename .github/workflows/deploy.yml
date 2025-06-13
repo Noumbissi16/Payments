@@ -1,0 +1,30 @@
+name: Deploy to VPS - Production
+on:
+    push:
+        branches:
+        - master
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.VPS_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.VPS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Deploy to VPS
+        run: |
+          ssh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+            cd /opt/om-transactions
+
+            # Pull latest code
+            git pull https://github.com/Noumbissi16/Payments.git
+
+            # Build and run container
+            docker-compose down
+            docker-compose up -d --build
+          EOF

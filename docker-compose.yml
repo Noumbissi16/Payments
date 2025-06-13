@@ -20,6 +20,8 @@ services:
       - SPRING_DATA_MONGODB_HOST=mongo
       - SPRING_DATA_MONGODB_PORT=27017
       - SPRING_DATA_MONGODB_DATABASE=om_transactions
+    volumes:
+      - ./config/application.properties:/app/config/application.properties
     networks:
       - om-net
 
