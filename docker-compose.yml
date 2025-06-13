@@ -1,0 +1,32 @@
+services:
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - 27017:27017
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - om-net
+
+  om-api:
+    image: om-api
+    container_name: om-api
+    ports:
+      - 4111:4111
+    depends_on:
+      - mongo
+    environment:
+      - SPRING_DATA_MONGODB_HOST=mongo
+      - SPRING_DATA_MONGODB_PORT=27017
+      - SPRING_DATA_MONGODB_DATABASE=om_transactions
+    networks:
+      - om-net
+
+volumes:
+  mongo-data:
+
+networks:
+  om-net:
+    name: om-net
+    driver: bridge
