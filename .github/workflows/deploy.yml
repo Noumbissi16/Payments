@@ -29,6 +29,6 @@ jobs:
             git pull https://github.com/Noumbissi16/Payments.git
 
             # Build and run container
-            docker-compose down
-            docker-compose up -d --build
+            docker compose down
+            docker compose up -d --build
           EOF
