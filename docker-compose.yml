@@ -10,6 +10,7 @@ services:
       - om-net
 
   om-api:
+    build: .
     image: om-api
     container_name: om-api
     ports:
