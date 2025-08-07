@@ -41,9 +41,10 @@ public class MtnPaymentController {
 
     @GetMapping("/status")
     public ResponseEntity<?> getTransactionStatus(
-            @RequestBody MtnStatusRequest request
+            @RequestParam("accessToken") String accessToken,
+            @RequestParam("payToken") String payToken
     ) {
-        return mtnPaymentService.getPaymentStatusMTN(request.getMessageId(), request.getAuthToken());
+        return mtnPaymentService.getPaymentStatusMTN(payToken, accessToken);
     }
 
 }

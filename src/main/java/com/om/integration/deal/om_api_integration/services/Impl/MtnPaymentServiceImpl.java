@@ -29,6 +29,7 @@ import java.time.Duration;
 import java.time.Instant;
 import java.util.Base64;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
@@ -136,6 +137,7 @@ public class MtnPaymentServiceImpl implements MtnPaymentService {
                         .createdAt(Instant.now())
                         .updatedAt(Instant.now())
                         .omTransactionId(response.getBody().getParameters().getMessageId())
+                        .payToken(response.getBody().getParameters().getMessageId())
                         .notificationUrl(notificationUrl)
                         .build();
 
@@ -195,7 +197,7 @@ public class MtnPaymentServiceImpl implements MtnPaymentService {
 
             // Update transaction status if found
             if (response.getStatusCode().is2xxSuccessful() && response.getBody() != null) {
-                Optional<Transaction> optionalTransaction = transactionRepository.findByOmTransactionId(messageId);
+                Optional<Transaction> optionalTransaction = transactionRepository.findByPayToken(messageId);
                 if (optionalTransaction.isPresent()) {
                     Transaction transaction = optionalTransaction.get();
                     transaction.setStatus(response.getBody().getStatus());
@@ -203,7 +205,8 @@ public class MtnPaymentServiceImpl implements MtnPaymentService {
                 }
             }
 
-            return ResponseEntity.ok(response.getBody());
+            String status = Objects.requireNonNull(response.getBody()).getStatus();
+            return ResponseEntity.ok(status);
 
         } catch (HttpClientErrorException e) {
             return ResponseEntity.status(e.getStatusCode())
@@ -271,7 +274,7 @@ public class MtnPaymentServiceImpl implements MtnPaymentService {
                     String status = statusResponse.getStatus();
                     System.out.println("📌 [MTN Polling] Transaction status received: " + status);
                     if (status != null) {
-                        Optional<Transaction> optionalTransaction = transactionRepository.findByOmTransactionId(messageId);
+                        Optional<Transaction> optionalTransaction = transactionRepository.findByPayToken(messageId);
                         if (optionalTransaction.isPresent()) {
                             Transaction transaction = optionalTransaction.get();
                             transaction.setStatus(status);

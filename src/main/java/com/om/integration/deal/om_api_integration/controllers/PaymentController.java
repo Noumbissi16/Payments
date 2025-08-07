@@ -35,8 +35,8 @@ public class PaymentController {
     @GetMapping("/status")
     public ResponseEntity<?> getPaymentStatus(
             @RequestParam("accessToken") String accessToken,
-            @RequestParam("payToken") String payToken)
-    {
+            @RequestParam("payToken") String payToken
+    ) {
         return paymentService.getPaymentStatus(accessToken, payToken);
     }
 
