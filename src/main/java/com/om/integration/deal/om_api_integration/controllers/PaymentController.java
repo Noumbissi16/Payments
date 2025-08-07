@@ -1,14 +1,11 @@
 package com.om.integration.deal.om_api_integration.controllers;
 
 
-import com.om.integration.deal.om_api_integration.payload.request.payment.GetPaymentStatusRequest;
-import com.om.integration.deal.om_api_integration.payload.request.payment.NotifUrlRequestBody;
-import com.om.integration.deal.om_api_integration.payload.request.payment.OmMakePaymentRequest;
-import com.om.integration.deal.om_api_integration.payload.request.payment.PaymentRequest;
+import com.om.integration.deal.om_api_integration.payload.request.payment.om.NotifUrlRequestBody;
+import com.om.integration.deal.om_api_integration.payload.request.payment.om.PaymentRequest;
 import com.om.integration.deal.om_api_integration.services.PaymentService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

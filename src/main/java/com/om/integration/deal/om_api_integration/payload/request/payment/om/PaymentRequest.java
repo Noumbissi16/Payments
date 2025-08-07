@@ -1,9 +1,7 @@
-package com.om.integration.deal.om_api_integration.payload.request.payment;
+package com.om.integration.deal.om_api_integration.payload.request.payment.om;
 
 
-import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Builder;
 import lombok.Data;

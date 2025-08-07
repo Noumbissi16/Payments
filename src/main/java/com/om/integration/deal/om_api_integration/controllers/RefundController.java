@@ -1,9 +1,8 @@
 package com.om.integration.deal.om_api_integration.controllers;
 
 
-import com.om.integration.deal.om_api_integration.payload.request.refund.RefundRequest;
-import com.om.integration.deal.om_api_integration.payload.request.refund.StatusCheckBodyRequest;
-import com.om.integration.deal.om_api_integration.payload.request.refund.StatusCheckRequest;
+import com.om.integration.deal.om_api_integration.payload.request.refund.om.RefundRequest;
+import com.om.integration.deal.om_api_integration.payload.request.refund.om.StatusCheckBodyRequest;
 import com.om.integration.deal.om_api_integration.services.RefundService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

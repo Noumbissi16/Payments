@@ -1,4 +1,4 @@
-package com.om.integration.deal.om_api_integration.payload.request.payment;
+package com.om.integration.deal.om_api_integration.payload.request.payment.om;
 
 import lombok.Builder;
 import lombok.Data;

@@ -4,12 +4,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.om.integration.deal.om_api_integration.model.Transaction;
 import com.om.integration.deal.om_api_integration.model.ennum.TransactionStatusEnum;
 import com.om.integration.deal.om_api_integration.model.ennum.TransactionTypeEnum;
-import com.om.integration.deal.om_api_integration.payload.request.payment.NotifUrlRequestBody;
-import com.om.integration.deal.om_api_integration.payload.request.payment.OmMakePaymentRequest;
-import com.om.integration.deal.om_api_integration.payload.request.payment.PaymentRequest;
-import com.om.integration.deal.om_api_integration.payload.response.payment.InitiatePaymentResponse;
-import com.om.integration.deal.om_api_integration.payload.response.payment.MakePaymentResponse;
-import com.om.integration.deal.om_api_integration.payload.response.payment.PaymentTokenResponse;
+import com.om.integration.deal.om_api_integration.payload.request.payment.om.NotifUrlRequestBody;
+import com.om.integration.deal.om_api_integration.payload.request.payment.om.OmMakePaymentRequest;
+import com.om.integration.deal.om_api_integration.payload.request.payment.om.PaymentRequest;
+import com.om.integration.deal.om_api_integration.payload.response.payment.om.InitiatePaymentResponse;
+import com.om.integration.deal.om_api_integration.payload.response.payment.om.MakePaymentResponse;
+import com.om.integration.deal.om_api_integration.payload.response.payment.om.PaymentTokenResponse;
 import com.om.integration.deal.om_api_integration.repository.TransactionRepository;
 import com.om.integration.deal.om_api_integration.services.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,7 +34,6 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledFuture;
-import java.util.concurrent.TimeUnit;
 
 @Service
 public class PaymentServiceImpl implements PaymentService {

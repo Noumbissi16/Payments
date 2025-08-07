@@ -1,6 +1,6 @@
 package com.om.integration.deal.om_api_integration.services;
 
-import com.om.integration.deal.om_api_integration.payload.request.refund.RefundRequest;
+import com.om.integration.deal.om_api_integration.payload.request.refund.om.RefundRequest;
 import org.springframework.http.ResponseEntity;
 
 public interface RefundService {

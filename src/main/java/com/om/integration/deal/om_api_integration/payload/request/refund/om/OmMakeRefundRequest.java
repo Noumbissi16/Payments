@@ -1,4 +1,4 @@
-package com.om.integration.deal.om_api_integration.payload.request.refund;
+package com.om.integration.deal.om_api_integration.payload.request.refund.om;
 
 import lombok.Builder;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.om.integration.deal.om_api_integration.payload.response.payment;
+package com.om.integration.deal.om_api_integration.payload.response.payment.om;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;

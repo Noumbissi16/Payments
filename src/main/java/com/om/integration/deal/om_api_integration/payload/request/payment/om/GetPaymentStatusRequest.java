@@ -1,4 +1,4 @@
-package com.om.integration.deal.om_api_integration.payload.request.payment;
+package com.om.integration.deal.om_api_integration.payload.request.payment.om;
 
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;

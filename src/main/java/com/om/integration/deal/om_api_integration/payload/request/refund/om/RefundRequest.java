@@ -1,4 +1,4 @@
-package com.om.integration.deal.om_api_integration.payload.request.refund;
+package com.om.integration.deal.om_api_integration.payload.request.refund.om;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.validation.constraints.NotBlank;

@@ -1,4 +1,4 @@
-package com.om.integration.deal.om_api_integration.payload.response.refund;
+package com.om.integration.deal.om_api_integration.payload.response.refund.om;
 
 
 import com.fasterxml.jackson.annotation.JsonProperty;
