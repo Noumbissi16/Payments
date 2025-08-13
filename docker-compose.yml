@@ -30,6 +30,8 @@ volumes:
   mongo-data:
 
 networks:
+  deals_payment_net:
+    driver: bridge
   om-net:
     name: om-net
     driver: bridge
