@@ -5,6 +5,7 @@ import com.om.integration.deal.om_api_integration.model.ennum.TransactionStatusE
 import com.om.integration.deal.om_api_integration.model.ennum.TransactionTypeEnum;
 import com.om.integration.deal.om_api_integration.payload.request.refund.mtn.MtnCashoutRequest;
 import com.om.integration.deal.om_api_integration.payload.request.refund.mtn.MtnCashoutStatusRequest;
+import com.om.integration.deal.om_api_integration.payload.request.refund.mtn.MtnRefundRequestApi;
 import com.om.integration.deal.om_api_integration.payload.request.refund.om.RefundRequest;
 import com.om.integration.deal.om_api_integration.payload.response.payment.mtn.MtnTokenResponse;
 import com.om.integration.deal.om_api_integration.payload.response.payment.mtn.MtnTransactionStatusResponse;
@@ -75,7 +76,7 @@ public class MtnRefundServiceImpl implements MtnRefundService {
 
 
     @Override
-    public ResponseEntity<MtnCashoutResponse> initiateCashout(MtnCashoutRequest cashoutRequest) {
+    public ResponseEntity<MtnCashoutResponse> initiateCashout(MtnRefundRequestApi cashoutRequest) {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(cashoutRequest.getAccessToken());
         headers.setContentType(MediaType.APPLICATION_JSON);
@@ -85,8 +86,8 @@ public class MtnRefundServiceImpl implements MtnRefundService {
                 .customerKey(mtnCustomerKey)
                 .customerSecret(mtnCustomerSecret)
                 .amount(cashoutRequest.getAmount())
-                .finalCustomerPhone(cashoutRequest.getFinalCustomerPhone())
-                .finalCustomerName(cashoutRequest.getFinalCustomerName())
+                .finalCustomerPhone(cashoutRequest.getCustomerPhoneNumber())
+                .finalCustomerName(cashoutRequest.getCustomerName())
                 .webhook(notificationUrl)
                 .refundMethod("MTN_MOMO_CMR")
                 .feesIncluded("No")
@@ -109,7 +110,7 @@ public class MtnRefundServiceImpl implements MtnRefundService {
                         .status(TransactionStatusEnum.INITIATED.name())
                         .omTransactionId(response.getBody().getMessageId())
                         .amount(cashoutRequest.getAmount())
-                        .payerNumber(cashoutRequest.getFinalCustomerPhone())
+                        .payerNumber(cashoutRequest.getCustomerPhoneNumber())
                         .build();
                 transactionRepository.save(transaction);
 
@@ -202,6 +203,8 @@ public class MtnRefundServiceImpl implements MtnRefundService {
                     .body(new MtnTokenResponse(null, null,0, "Error fetching token: " + e.getMessage()));
         }
     }
+
+
     public void scheduleCashoutStatusCheck(String initialToken, String messageId) {
         Runnable task = new Runnable() {
             private int attempt = 0;

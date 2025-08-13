@@ -3,6 +3,7 @@ package com.om.integration.deal.om_api_integration.controllers;
 
 import com.om.integration.deal.om_api_integration.payload.request.refund.mtn.MtnCashoutRequest;
 import com.om.integration.deal.om_api_integration.payload.request.refund.mtn.MtnCashoutStatusRequest;
+import com.om.integration.deal.om_api_integration.payload.request.refund.mtn.MtnRefundRequestApi;
 import com.om.integration.deal.om_api_integration.services.MtnRefundService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/mtn/refund")
+@RequestMapping("/api/refund/mtn")
 public class MtnRefundController {
 
     @Autowired
@@ -21,8 +22,8 @@ public class MtnRefundController {
         return mtnRefundService.getAccessTokenRequestMTN();
     }
 
-    @PostMapping("/cashout")
-    public ResponseEntity<?> initiateCashout( @RequestBody MtnCashoutRequest cashoutRequest) {
+    @PostMapping("/refund")
+    public ResponseEntity<?> initiateCashout( @RequestBody MtnRefundRequestApi cashoutRequest) {
         return mtnRefundService.initiateCashout(cashoutRequest);
     }
 

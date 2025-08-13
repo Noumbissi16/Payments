@@ -14,12 +14,16 @@ import lombok.NoArgsConstructor;
 @Data
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class MtnTransactionStatusResponse {
-    private String status;
-    private Parameters parameters;
-    private String errorMessage;
+
     private int statusCode;
     private String body;
+    @JsonProperty("ErrorMessage")
+    private String errorMessage;
+    private String status;
+    private Parameters parameters;
+    @JsonProperty("CreateAt")
     private String createAt;
+    @JsonProperty("MessageId")
     private String messageId;
 
 
@@ -37,6 +41,7 @@ public class MtnTransactionStatusResponse {
         @JsonProperty("final_customer_name")
         private String finalCustomerName;
         private String notifUrl;
-        private String MessageId;
+        @JsonProperty("MessageId")
+        private String messageId;
     }
 }

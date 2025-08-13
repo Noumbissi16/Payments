@@ -18,7 +18,14 @@ import java.util.Map;
 public class MtnCashoutResponse {
     @JsonProperty("MessageId")
     private String messageId;
-    private Map<String, String> queueId;
+    @JsonProperty("QueueId")
+    private QueueId queueId;
     private String errorMessage;
+
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class QueueId {
+        @JsonProperty("MessageId")
+        private String messageId;
+    }
 
 }
