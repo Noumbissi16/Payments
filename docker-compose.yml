@@ -6,8 +6,6 @@ services:
       - 27018:27017
     volumes:
       - mongo-data:/data/db
-    networks:
-      - om-net
 
   om-api:
     build:
@@ -24,14 +22,11 @@ services:
     volumes:
       - ./config/application.properties:/app/config/application.properties
     networks:
-      - om-net
+      - deals_payment_net
 
 volumes:
   mongo-data:
 
 networks:
   deals_payment_net:
-    driver: bridge
-  om-net:
-    name: om-net
-    driver: bridge
+    external: true
