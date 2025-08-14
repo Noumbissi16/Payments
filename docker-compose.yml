@@ -3,7 +3,7 @@ services:
     image: mongo
     container_name: mongo
     ports:
-      - 27018:27017
+      - "27018:27017"
     volumes:
       - mongo-data:/data/db
 
@@ -21,8 +21,8 @@ services:
       - SPRING_DATA_MONGODB_DATABASE=om_transactions
     volumes:
       - ./config/application.properties:/app/config/application.properties
-    networks:
-      - deals_payment_net
+#    networks:
+#      - deals_payment_net
 
 volumes:
   mongo-data:
