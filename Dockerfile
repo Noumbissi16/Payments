@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Leverage Docker cache for dependencies
 COPY pom.xml .
-RUN mvn dependency:go-offline
+RUN mvn dependency:go-offline -DskipTests
 
 # Copy the rest of the application code
 COPY . .
