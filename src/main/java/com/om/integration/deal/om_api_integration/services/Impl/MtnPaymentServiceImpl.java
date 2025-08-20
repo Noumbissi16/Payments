@@ -38,8 +38,8 @@ import java.util.concurrent.ScheduledFuture;
 @Service
 public class MtnPaymentServiceImpl implements MtnPaymentService {
 
-    @Value("${api.mtn.clientId}")
-    private String mtnClientId;
+//    @Value("${api.mtn.clientId}")
+//    private String mtnClientId;
 
     @Value("${api.mtn.clientSecret}")
     private String mtnClientSecret;
@@ -75,7 +75,7 @@ public class MtnPaymentServiceImpl implements MtnPaymentService {
 
     @Override
     public ResponseEntity<MtnTokenResponse> getAccessTokenRequestMTN() {
-        String authorizationToEncode = mtnClientId + ":" + mtnClientSecret ;
+        String authorizationToEncode = "mtnClientId" + ":" + mtnClientSecret ;
         String encodedAuth = Base64.getEncoder().encodeToString(authorizationToEncode.getBytes(StandardCharsets.UTF_8));
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_FORM_URLENCODED);
