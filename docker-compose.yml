@@ -5,7 +5,6 @@ services:
     container_name: om-api
     hostname: om-api
     image: om-api
-    restart: always
     ports:
       - "4111:4111"
     environment:
